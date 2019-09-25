@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Radium, { StyleRoot }  from 'radium';
-import Char from '../components/Char';
-import Person from './Person';
-import Validation from '../components/Validation';
-import styles from '../styles/styles.module.scss';
+import PersonList from './PersonList';
+import Styles from '../styles/styles.module.scss';
+import Cockpit from './Cockpit';
+import LenghtListener from './LengthListener';
 
 class App extends Component {
   state = {
@@ -57,58 +57,26 @@ class App extends Component {
   }
 
   render () {
-
-    let persons = null;
-    const classes = []; //['red', 'bold'].join(' ');
-
-    if (this.state.persons.length <= 2) {
-      classes.push(styles.red);
-    }
-    if (this.state.persons.length <= 1) {
-      classes.push(styles.bold);
-    }
-    if (this.state.togglePerson) {
-      persons = (
-        <div>
-          { this.state.persons.map((person, index) => {
-              return <Person 
-                        click={() => this.deletePersonHandler(index)}
-                        key={person.id}
-                        name={person.name} 
-                        age={person.age}
-                        changed={(e) => this.nameChangedHandler(e, person.id)}
-                      />
-            })
-          }
-        </div>
-      )  
-    }
-
-    const charList = this.state.word.split('').map((ch, index) => {
-      return <Char 
-                word={ch}
-                key={index}
-                removeItem={() => this.removeItemHandler(index)} />
-    });
-    
     return (
       <StyleRoot>
-        <div className={styles.app}>
-          <h1>Hi, I'm a React app</h1>
-          <p className={classes.join(' ')}>This is really working!</p>
-          <button 
-            className={styles.button}
-            onClick={this.togglePersonsHandler}
-          >
-            Toggle People
-          </button>
-          {persons}
-          <div>
-            <input type="text" name="lengthListener" value={this.state.word} onChange={(e) => this.getLengthListener(e)}/>
-            <p>Length of text: {this.state.wordLength}</p>
-            <Validation length={this.state.wordLength} />
-            {charList}
-          </div>
+        <div className={Styles.app}>
+          <Cockpit 
+            persons={this.state.persons} 
+            toggle={this.togglePersonsHandler} 
+          />
+          { this.state.togglePerson && 
+              <PersonList 
+                persons={this.state.persons} 
+                clicked={this.deletePersonHandler} 
+                changed={this.nameChangedHandler}
+              />
+          }
+          <LenghtListener 
+            word={this.state.word}
+            wordLength={this.state.wordLength}
+            removeItemHandler={(index) => this.removeItemHandler(index)}
+            getLengthListener={(index) => this.getLengthListener(index)}
+          />
         </div>
       </StyleRoot>
     );
