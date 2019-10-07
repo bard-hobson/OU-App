@@ -1,3 +1,7 @@
-@import './base/base.module';
 @import './base/settings.module';
+@import './base/base.module';
+@import './components/button.module';
+@import './components/content-container.module';
+@import './components/header.module';
+@import './components/inputs.module';
 @import './components/layout.module';

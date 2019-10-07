@@ -2,12 +2,13 @@ import numeral from 'numeral';
 
 export default (props) => {
     const seconds = props.seconds = parseInt(props.seconds) || 0;
-    const minutes = parseInt(props.minutes);// || 0;
-    
+    const minutes = isNaN(parseInt(props.minutes)) ? 0 : parseInt(props.minutes);// || 0;
+    console.log('minutes::', minutes);
     const totalSecondsGone = ((props.currentPeriod - 1) * props.periodMax) 
            + ((((props.periodMax / 60) - minutes) * 60) + seconds);
-    
-    
+    console.log('props.currentPeriod::', props.currentPeriod);
+    console.log('props.periodMax::', props.periodMax);
+    console.log('totalSecondsGone::', totalSecondsGone);
     const totalSecondsInGame = props.periodMax * props.maxPeriods;
     
     const calcHomeTotal =  (props.homeTeamScore / totalSecondsGone) * totalSecondsInGame;

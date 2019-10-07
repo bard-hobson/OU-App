@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import SelectPeriod from './SelectPeriod';
 import TimeLeft from './TimeLeftInPeriod';
 import { setSelectSport, setHomeScore, setAwayScore } from '../actions/filters';
+import Styles from '../styles/styles.module.scss';
 
 export class InputForm extends Component {
     sportSelectionHandler = (sport) => {
@@ -61,17 +62,19 @@ export class InputForm extends Component {
                 <form>
                     <input 
                         type="number" 
+                        className={Styles["text-input"]}
                         placeholder="Home Team Score" 
                         value={this.props.homeTeamScore} 
                         onChange={(ev) => this.setHomeScore(ev.target.value)}
                     />
                     <input 
                         type="number" 
+                        className={Styles["text-input"]}
                         placeholder="Away Team Score" 
                         value={this.props.awayTeamScore} 
                         onChange={(ev) => this.setAwayScore(ev.target.value)}
                     />
-                    <select onChange={(ev) => this.sportSelectionHandler(ev.target.value)} >
+                    <select className={Styles["text-input"]} onChange={(ev) => this.sportSelectionHandler(ev.target.value)} >
                         <option value="default">-Select Sport-</option>
                         <option value="NBA">NBA</option>
                         <option value="NFL">NFL</option>
@@ -79,8 +82,10 @@ export class InputForm extends Component {
                         <option value="NCAAF">NCAA Football</option>
                         <option value="NCAAM">NCAA Basketball</option>
                     </select> 
-                    <SelectPeriod />
-                    <TimeLeft />
+                    <div className={Styles["filter-box"]}>
+                        <SelectPeriod />
+                        <TimeLeft />
+                    </div>
                     
                 </form>
             </div>

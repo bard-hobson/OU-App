@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { periodWordsHandler, setPeriodSelection } from '../actions/filters';
+import Styles from '../styles/styles.module.scss';
 
 class SelectPeriod extends Component {
     periodWordsHandler = () => {
@@ -26,8 +27,9 @@ class SelectPeriod extends Component {
                 {this.props.props.gameSections &&
                 ( 
                     <>
-                        <label>Current {this.props.props.period}:</label>
-                        <select onChange={(ev) => this.setPeriodSelection(ev.target.value)} value={this.props.props.currentPeriod}>
+                    
+                        <label className={Styles["text-input--label"]}>Current {this.props.props.period}:</label>
+                        <select className={Styles.select} onChange={(ev) => this.setPeriodSelection(ev.target.value)} value={this.props.props.currentPeriod}>
                             {this.props.props.gameSections.map((sec)=> {
                                 return (
                                     <option key={sec+'-1'} value={sec} >{sec}</option>

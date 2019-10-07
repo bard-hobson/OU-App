@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Aux from '../hoc/Auxilary';
 import { setMinutes, setSeconds } from '../actions/filters';
+import Styles from '../styles/styles.module.scss';
 
 export class TimeLeftInPeriod extends Component {
     getMinutes = (e) => {
@@ -40,9 +41,9 @@ export class TimeLeftInPeriod extends Component {
             const dis = minutes === (this.props.props.periodMax / 60) ? 'disabled' : null;
             return (
                 <Aux>
-                    <input type="number" min={0} max={minuteMax} strict="true" value={minutes} onChange={(ev) => this.getMinutes(ev.target.value)} /> 
+                    <input type="number" className={Styles["text-input"]} min={0} max={minuteMax} strict="true" value={minutes} onChange={(ev) => this.getMinutes(ev.target.value)} /> 
                     <span>:</span> 
-                    <input type="number" min={0} max={59} value={seconds} onChange={(ev) => this.getSeconds(ev.target.value)} disabled={dis}/>
+                    <input type="number" className={Styles["text-input"]} min={0} max={59} value={seconds} onChange={(ev) => this.getSeconds(ev.target.value)} disabled={dis}/>
                 </Aux>
             )
         } else {
