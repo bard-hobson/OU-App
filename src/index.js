@@ -4,5 +4,12 @@ import './styles/styles.module.scss';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+const jsx = (
+   <div>
+       <App />
+   </div>
+);
+
+ReactDOM.render(jsx, document.getElementById('root'));
 registerServiceWorker();
