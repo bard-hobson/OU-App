@@ -5,6 +5,10 @@
     height: 50px;
     padding: $s-size;
     margin-right: $s-size;
+
+    @media(max-width: $desktop-breakpoint){
+        margin-bottom: $s-size;
+    }
 }
 .text-input--label{
     align-items: center;

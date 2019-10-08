@@ -38,8 +38,9 @@ export class InputForm extends Component {
                 break;
             }
         const currentPeriod =  1;
+        const sportListSelection = sport;
         const filtersUpdate = {
-            sport, period, gameSections, periodMax, maxPeriods, currentPeriod
+            sportListSelection, period, gameSections, periodMax, maxPeriods, currentPeriod
         }
         this.props.setSelectSport(filtersUpdate);
     }
@@ -58,7 +59,7 @@ export class InputForm extends Component {
         
         return (
             <div>
-                <h1>Current Score</h1>
+                <h2>Over / Under Calculator</h2>
                 <form>
                     <input 
                         type="number" 
