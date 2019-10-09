@@ -1,6 +1,7 @@
 {
-  "name": "react-complete-guide",
+  "name": "ou-calculator",
   "version": "0.1.0",
+  "homepage": "https://bard-hobson.github.io/OU-App/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.5.0",
@@ -21,7 +22,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",
